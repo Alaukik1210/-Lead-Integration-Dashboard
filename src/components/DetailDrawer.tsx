@@ -27,7 +27,7 @@ if (!lead || !open) return null;
       New: "bg-blue-50 text-blue-700 border border-blue-200",
       Contacted: "bg-cyan-50 text-cyan-700 border border-cyan-200",
       "Follow-up": "bg-amber-50 text-amber-700 border border-amber-200",
-      Converted: "bg-emerald-50 text-emerald-700 border border-emerald-200",
+      Converted: "bg-green-50 text-green-700 border border-green-200",
       Closed: "bg-slate-50 text-slate-600 border border-slate-200",
     };
     return colors[status] || "bg-gray-50 text-gray-700 border border-gray-200";
@@ -117,10 +117,10 @@ if (!lead || !open) return null;
 
       <div
         className={`fixed h-screen top-0 right-0 w-full max-w-xl rounded-l-3xl bg-white shadow-lg
-    transform transition-transform duration-300
+    transform transition-transform duration-300 flex flex-col
     ${open ? "translate-x-0" : "translate-x-full"}`}
       >
-        <div className="flex justify-between bg-[#5919C1] items-center p-1 md:p-2">
+        <div className="flex justify-between bg-[#5919C1] items-center p-1 md:p-2 flex-shrink-0">
           
           <div className=" rounded-l-3xl py-1 md:py-2">
             <h1 className=" text-white px-4 py-2 text-2xl font-bold">
@@ -136,6 +136,7 @@ if (!lead || !open) return null;
             </button>
           </div>
         </div>
+        <div className="overflow-y-auto flex-1 scrollbar-hide">
         <div className="shadow-xl md:p-6 p-4 rounded-3xl">
           <div className="mb-4 font-bold text-gray-700  text-2xl uppercase">
             Lead Information
@@ -239,9 +240,9 @@ if (!lead || !open) return null;
                   <div
                     className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-lg shadow-lg ${
                       step.isActive
-                        ? "bg-gradient-to-br from-teal-500 to-teal-600 text-white ring-4 ring-teal-100"
+                        ? "bg-gradient-to-br from-green-500 to-green-600 text-white ring-4 ring-green-100"
                         : step.isCompleted
-                        ? "bg-gradient-to-br from-emerald-500 to-emerald-600 text-white"
+                        ? "bg-gradient-to-br from-green-500 to-green-600 text-white"
                         : "bg-gray-200 text-gray-400"
                     }`}
                   >
@@ -250,7 +251,7 @@ if (!lead || !open) return null;
                   {index < timelineSteps.length - 1 && (
                     <div
                       className={`w-0.5 h-6 ${
-                        step.isCompleted ? "bg-emerald-300" : "bg-gray-200"
+                        step.isCompleted ? "bg-green-300" : "bg-gray-200"
                       }`}
                     ></div>
                   )}
@@ -259,9 +260,9 @@ if (!lead || !open) return null;
                   <h4
                     className={`font-bold ${
                       step.isActive
-                        ? "text-teal-700 text-lg"
+                        ? "text-green-700 text-lg"
                         : step.isCompleted
-                        ? "text-emerald-700"
+                        ? "text-green-700"
                         : "text-gray-400"
                     }`}
                   >
@@ -278,7 +279,7 @@ if (!lead || !open) return null;
                   </p>
                   {step.isActive && (
                     <div className="">
-                      <span className="text-xs font-semibold text-teal-600 bg-teal-50 px-3  rounded-full">
+                      <span className="text-xs font-semibold text-green-600 bg-green-50 px-3  rounded-full">
                         {lead.last_updated}
                       </span>
                     </div>
@@ -287,6 +288,7 @@ if (!lead || !open) return null;
               </div>
             ))}
           </div>
+        </div>
         </div>
       </div>
     </div>
